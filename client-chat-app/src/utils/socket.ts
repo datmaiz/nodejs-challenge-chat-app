@@ -1,4 +1,5 @@
 import { io, Socket } from 'socket.io-client'
+import { baseURL } from './constants'
 
 let socket: Socket
 
@@ -7,7 +8,7 @@ export const connectSocket = (token: string) => {
 		socket.disconnect()
 	}
 
-	socket = io('http://localhost:3000', {
+	socket = io(baseURL, {
 		withCredentials: true,
 		auth: {
 			token: token.startsWith('Bearer ') ? token.split(' ')[1] : token,
