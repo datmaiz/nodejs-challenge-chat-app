@@ -1,4 +1,5 @@
 export const baseURL = import.meta.env.VITE_BASE_URL
+export const SOCKET_URL = import.meta.env.VITE_SOCKET_URL
 export const SOCKET_EVENTS = {
 	CONNECTION: 'connection',
 	DISCONNECT: 'disconnect',
