@@ -63,6 +63,7 @@ mongoose
 	.connect(MONGOOSE_URI!)
 	.then(() => {
 		console.log('Connected to MongoDB')
+		console.log(CLIENT_URL)
 
 		const server = app.listen(PORT, () => {
 			console.log(`Server is running on port ${PORT}`)

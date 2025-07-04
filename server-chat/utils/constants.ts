@@ -12,7 +12,7 @@ export const TEST = process.env.NODE_ENV === 'test'
 export const SALT = 10
 export const ACCESS_KEY = process.env.JWT_ACCESS_KEY
 export const REFRESH_KEY = process.env.JWT_REFRESH_KEY
-export const CLIENT_URL = process.env.JWT_CLIENT_URL
+export const CLIENT_URL = process.env.CLIENT_URL
 
 export const SOCKET_EVENTS = {
 	CONNECTION: 'connection',
