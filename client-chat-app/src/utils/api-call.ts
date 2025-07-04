@@ -1,19 +1,18 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 type Method = 'GET' | 'POST'
 
-type ReplacePath<T extends string, P> = T extends `${infer S}:${infer Param}/${infer R}`
-	? P extends Record<string, any>
-		? P[Param] extends string | number
-			? `${S}${P[Param]}/${ReplacePath<R, P>}`
-			: never
-		: never
-	: T extends `${infer S}:${infer Param}`
-	? P extends Record<string, any>
-		? P[Param] extends string | number
-			? `${S}${P[Param]}`
-			: never
-		: never
-	: T
+// type ReplacePath<T extends string, P> = T extends `${infer S}:${infer Param}/${infer R}`
+// 	? P extends Record<string, any>
+// 		? P[Param] extends string | number
+// 			? `${S}${P[Param]}/${ReplacePath<R, P>}`
+// 			: never
+// 		: never
+// 	: T extends `${infer S}:${infer Param}`
+// 	? P extends Record<string, any>
+// 		? P[Param] extends string | number
+// 			? `${S}${P[Param]}`
+// 			: never
+// 		: never
+// 	: T
 
 function replacePathParams(path: string, params: Record<string, string | number>): string {
 	return path.replace(/:([a-zA-Z_]+)/g, (_, key) => params[key]?.toString() ?? '')
