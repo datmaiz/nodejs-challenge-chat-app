@@ -38,7 +38,8 @@ export const signIn = async (req: Request, res: Response) => {
 		res.cookie('refreshToken', refreshToken, {
 			httpOnly: true,
 			secure: true, // only https
-			sameSite: 'strict',
+			sameSite: 'none', // Changed from 'strict' to 'none' to work across domains
+			path: '/', // Added explicit path
 			maxAge: 1 * 24 * 60 * 60 * 1000, // 1 days
 		})
 
@@ -91,7 +92,7 @@ export const register = async (req: Request, res: Response) => {
 
 export const refreshToken = async (req: Request, res: Response) => {
 	try {
-		const token = req.cookies.refreshToken
+		const token = req.cookies.refreshToken || req.headers['x-refresh-token'] // Added header fallback
 		if (!token) {
 			return res
 				.status(HttpStatusCode.UNAUTHORIZED)
